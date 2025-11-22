@@ -1,4 +1,3 @@
-
 <!doctype html>
 <html lang="en">
 <head>
@@ -641,12 +640,11 @@
       const collectionCoversContainer = $('#collectionCovers');
       const mobileCollectionCoversContainer = $('#mobileCollectionCovers');
 
+      // Render collection covers for desktop (always) and mobile (only when viewport is small)
       function renderCollectionCovers(){
+        // Desktop covers: always render into the gallery section container (collectionCoversContainer)
         if(collectionCoversContainer) collectionCoversContainer.innerHTML = '';
-        if(mobileCollectionCoversContainer) mobileCollectionCoversContainer.innerHTML = '';
-
         Object.keys(collectionCovers).forEach((key) => {
-          // Desktop tile
           if(collectionCoversContainer){
             const div = document.createElement('div');
             div.className = 'collection-cover';
@@ -663,37 +661,57 @@
             div.appendChild(label);
             collectionCoversContainer.appendChild(div);
           }
-
-          // Mobile stacked full-bleed card, clickable
-          if(mobileCollectionCoversContainer){
-            const mdiv = document.createElement('div');
-            mdiv.className = 'mobile-collection-card';
-            mdiv.setAttribute('role','listitem');
-            const mimg = document.createElement('img');
-            mimg.src = collectionCovers[key];
-            mimg.alt = key + ' cover';
-            mimg.loading = 'lazy';
-            const overlay = document.createElement('div');
-            overlay.className = 'overlay';
-            const title = document.createElement('div');
-            title.className = 'title';
-            title.textContent = key;
-            const ctaWrap = document.createElement('div');
-            ctaWrap.className = 'cta';
-            const ctaBtn = document.createElement('button');
-            ctaBtn.className = 'btn';
-            ctaBtn.textContent = 'View collection';
-            ctaBtn.addEventListener('click', function(e){ e.stopPropagation(); openModalForCollection(key); });
-            ctaWrap.appendChild(ctaBtn);
-            overlay.appendChild(title);
-            overlay.appendChild(ctaWrap);
-            mdiv.appendChild(mimg);
-            mdiv.appendChild(overlay);
-            mdiv.addEventListener('click', function(){ openModalForCollection(key); });
-            mobileCollectionCoversContainer.appendChild(mdiv);
-          }
         });
+
+        // Mobile stacked covers: render only when viewport is mobile-sized (<=820px).
+        // This ensures the stacked large tiles appear on the Home screen only on phones.
+        if(mobileCollectionCoversContainer){
+          // Clear first
+          mobileCollectionCoversContainer.innerHTML = '';
+          if(window.innerWidth <= 820){
+            // Populate mobile stacked cards (these live only in the #home section)
+            Object.keys(collectionCovers).forEach((key) => {
+              const mdiv = document.createElement('div');
+              mdiv.className = 'mobile-collection-card';
+              mdiv.setAttribute('role','listitem');
+              const mimg = document.createElement('img');
+              mimg.src = collectionCovers[key];
+              mimg.alt = key + ' cover';
+              mimg.loading = 'lazy';
+              const overlay = document.createElement('div');
+              overlay.className = 'overlay';
+              const title = document.createElement('div');
+              title.className = 'title';
+              title.textContent = key;
+              const ctaWrap = document.createElement('div');
+              ctaWrap.className = 'cta';
+              const ctaBtn = document.createElement('button');
+              ctaBtn.className = 'btn';
+              ctaBtn.textContent = 'View collection';
+              ctaBtn.addEventListener('click', function(e){ e.stopPropagation(); openModalForCollection(key); });
+              ctaWrap.appendChild(ctaBtn);
+              overlay.appendChild(title);
+              overlay.appendChild(ctaWrap);
+              mdiv.appendChild(mimg);
+              mdiv.appendChild(overlay);
+              mdiv.addEventListener('click', function(){ openModalForCollection(key); });
+              mobileCollectionCoversContainer.appendChild(mdiv);
+            });
+          } else {
+            // On larger screens, keep mobile container empty (we want the desktop grid in the Gallery view)
+            mobileCollectionCoversContainer.innerHTML = '';
+          }
+        }
       }
+
+      // Debounced resize handling to re-render mobile covers on breakpoint change
+      let resizeTimer = null;
+      window.addEventListener('resize', function(){
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(function(){
+          renderCollectionCovers();
+        }, 220);
+      });
 
       // MODAL / LIGHTBOX
       const modal = $('#galleryModal');
@@ -936,4 +954,4 @@
     })();
   </script>
 </body>
-</html>
+  </html>
