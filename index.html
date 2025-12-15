@@ -1560,9 +1560,8 @@ document.createElement('div');
     const closeGallery = $('#closeGallery');
     const modalTitle = $('#modalTitle');
     const modalSubtitle = $('#modalSubtitle');
-    const modalFocused = (document.querySelector('.modal-
+    const modalFocused = $('.modal-focused');
 
-focused'));
 
     function openModalForCollection(collectionKey, focusedIndex = 0){
       const imgs = collections[collectionKey] || [];
@@ -1574,8 +1573,8 @@ focused'));
         const thumbWrap = document.createElement('div');
         thumbWrap.className = 'thumb';
         const img = document.createElement('img');
-
         img.src = src;
+
         img.alt = collectionKey + ' — ' + (idx + 1);
         img.loading = 'lazy';
         img.addEventListener('click', function(){ showLargeImageInModal(src, collectionKey); });
@@ -1587,8 +1586,8 @@ focused'));
         showLargeImageInModal(imgs[Math.min(focusedIndex, imgs.length - 1)], collectionKey);
       } else {
         if(modalFocused) modalFocused.innerHTML = '<div style="color:var(--muted)">No images yet for this collection.</div>';
-
       }
+
 
       modal && modal.classList.add('show');
       modal && modal.setAttribute('aria-hidden','false');
@@ -1605,7 +1604,6 @@ focused'));
       big.loading = 'eager';
       modalFocused.appendChild(big);
 
-
       modalFocused.scrollIntoView({ behavior: 'smooth', block: 'center' });
     }
 
@@ -1617,8 +1615,9 @@ focused'));
     }
     $('#moreGalleryBtn') && $('#moreGalleryBtn').addEventListener('click', function(){ const first = Object.keys(collections)[0]; openModalForCollection(first, 0); });
     closeGallery && closeGallery.addEventListener('click', closeModal);
+    modal && 
 
-    modal && modal.addEventListener('click', function(e){ if(e.target === modal) closeModal(); });
+modal.addEventListener('click', function(e){ if(e.target === modal) closeModal(); });
     document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeModal(); });
 
     // ORDER FORM (single implementation; validation + UX)
@@ -1629,28 +1628,27 @@ focused'));
 
     function setError(el, text){
       if(!el) return;
-      const err = document.getElementById('err-' + el.id);
+      const err = $('#err-' + el.id);
       el.classList.add('is-invalid');
       if(err){ err.textContent = text; err.style.display = 'block'; }
     }
-
     function clearError(el){
       if(!el) return;
-      const err = document.getElementById('err-' + el.id);
+
+      const err = $('#err-' + el.id);
       el.classList.remove('is-invalid');
       if(err){ err.textContent = ''; err.style.display = 'none'; }
     }
     function validateOrder(){
       let ok = true;
-      const name = document.getElementById('name');
-      const email = document.getElementById('email');
-      const details = document.getElementById('details');
+      const name = $('#name');
+      const email = $('#email');
+      const details = $('#details');
       if(!name.value.trim()){ setError(name, 'Please enter your name'); ok = false; } else clearError(name);
-      if(!email.value.trim() || !/^\S+@\S+\.\S+$/.test(email.value)){ setError(email, 'Please enter a valid email'); ok = false; } 
-
-else clearError(email);
+      if(!email.value.trim() || !/^\S+@\S+\.\S+$/.test(email.value)){ setError(email, 'Please enter a valid email'); ok = false; } else clearError(email);
       if(details.value.trim().length < 10){ setError(details, 'Please provide more details (min 10 chars)'); ok = false; } else clearError(details);
       return ok;
+
     }
 
     if(orderForm){
@@ -1665,11 +1663,11 @@ else clearError(email);
         // Simulate send; replace with actual fetch() to your backend endpoint
         setTimeout(()=> {
           orderForm.reset();
-
           orderMsg.textContent = 'Order submitted. We will contact you shortly.';
           orderSubmit.disabled = false;
           setTimeout(()=> { orderMsg.textContent = ''; }, 6000);
         }, 900);
+
       });
     }
     if(orderReset){
@@ -1681,34 +1679,33 @@ else clearError(email);
           orderForm.querySelectorAll('.error-text').forEach(s => { s.textContent = ''; s.style.display = 'none'; });
         }
       });
-
     }
     // live-clear on input
     if(orderForm){
       orderForm.addEventListener('input', function(e){
-        if(e.target && e.target.classList) clearError(e.target);
+        if(e.target && e.target.classList) 
+
+clearError(e.target);
       });
     }
 
     // HERO overlay CTA hooking
-    document.getElementById('overlayView') && document.getElementById('overlayView').addEventListener('click', ()=> showSection('gallery'));
-    document.getElementById('overlayOrder') && document.getElementById('overlayOrder').addEventListener('click', ()=> 
-
-showSection('order'));
+    $('#overlayView') && $('#overlayView').addEventListener('click', ()=> showSection('gallery'));
+    $('#overlayOrder') && $('#overlayOrder').addEventListener('click', ()=> showSection('order'));
 
     // CREATOR WIDGET behavior (opens panel when avatar clicked)
-    const creator = document.getElementById('creator');
-    const creatorAvatar = document.getElementById('creatorAvatar');
-    const creatorPanel = document.getElementById('creatorPanel');
-    const creatorClose = document.getElementById('creatorClose');
+    const creator = $('#creator');
+    const creatorAvatar = $('#creatorAvatar');
+    const creatorPanel = $('#creatorPanel');
+    const creatorClose = $('#creatorClose');
 
     function openCreatorPanel(){
       if(!creatorPanel) return;
       creatorPanel.style.display = 'block';
+
       creatorPanel.style.opacity = 0;
       creatorPanel.style.transform = 'translateY(8px)';
       creatorPanel.style.transition = 'opacity 220ms ease, transform 220ms cubic-bezier(.2,.9,.3,1)';
-
       requestAnimationFrame(()=> {
         creatorPanel.style.opacity = 1;
         creatorPanel.style.transform = 'translateY(0)';
@@ -1718,13 +1715,14 @@ showSection('order'));
       // trap focus
       const focusables = creatorPanel.querySelectorAll('a,button,input,textarea,select');
       if(focusables.length) focusables[0].focus();
-      document.body.style.overflow = 'hidden';
+      document.body.style.overflow = 
+
+'hidden';
     }
 
     function closeCreatorPanel(){
       if(!creatorPanel) return;
       creatorPanel.style.opacity = 0;
-
       creatorPanel.style.transform = 'translateY(8px)';
       creatorPanel.setAttribute('aria-hidden','true');
       creatorPanel.setAttribute('aria-modal','false');
@@ -1736,7 +1734,9 @@ showSection('order'));
     }
 
     // Attach handlers
-    creatorAvatar && creatorAvatar.addEventListener('click', function(e){ e.stopPropagation(); openCreatorPanel(); });
+    creatorAvatar && creatorAvatar.addEventListener('click', 
+
+function(e){ e.stopPropagation(); openCreatorPanel(); });
     creatorClose && creatorClose.addEventListener('click', function(e){ e.stopPropagation(); closeCreatorPanel(); });
 
     // Close panel by clicking outside
@@ -1749,11 +1749,11 @@ showSection('order'));
 
     document.addEventListener('keydown', function(ev){
       if(ev.key === 'Escape'){
-        if(creatorPanel && creatorPanel.style.display === 'block') closeCreatorPanel();
-        if(modal && modal.classList.contains('show')) closeModal();
-        if(mobileNav && mobileNav.classList.contains('open')) 
+        if(creatorPanel && creatorPanel.style.display === 'block') 
 
-closeMobileNav();
+closeCreatorPanel();
+        if(modal && modal.classList.contains('show')) closeModal();
+        if(mobileNav && mobileNav.classList.contains('open')) closeMobileNav();
       }
     });
 
@@ -1767,25 +1767,25 @@ closeMobileNav();
         const first = focusables[0];
         const last = focusables[focusables.length - 1];
         if(ev.shiftKey && document.activeElement === first){ ev.preventDefault(); last.focus(); }
-
         else if(!ev.shiftKey && document.activeElement === last){ ev.preventDefault(); first.focus(); }
       });
     }
 
     // BACK TO TOP BUTTON
-    const backToTopBtn = document.getElementById('backToTop');
+    const backToTopBtn = $('#backToTop');
     
     // Function to check scroll position and show/hide button
     function toggleBackToTop() {
       if (window.scrollY > 300) {
         backToTopBtn.classList.add('visible');
       } else {
-        backToTopBtn.classList.remove('visible');
+        
+
+backToTopBtn.classList.remove('visible');
       }
     }
     
     // Scroll to top function
-
     function scrollToTop() {
       window.scrollTo({
         top: 0,
@@ -1800,11 +1800,11 @@ closeMobileNav();
       backToTopBtn.addEventListener('click', scrollToTop);
       
       // Initial check
+
       toggleBackToTop();
       
       // Listen for scroll events
       window.addEventListener('scroll', toggleBackToTop);
-
     }
 
     // RENDER collections (initial)
@@ -1812,13 +1812,13 @@ closeMobileNav();
 
     // DEGRADE-FRIENDLY: if images fail to load when opened directly from file://, try adding basic error handlers to show helpful alt label or fallback
     // (This doesn't bypass browser file:// security restrictions; it just gives clearer feedback.)
-    Array.from(document.querySelectorAll('img')).forEach(img => {
+    $$('img').forEach(img => {
       img.addEventListener('error', function(){
         // if image fails, try swapping to a generic placeholder if present
         if(!img.dataset._triedFallback){
+
           img.dataset._triedFallback = '1';
           // fallback to a known file name if exists
-
           img.src = 'media/icon.jpg';
         } else {
           // give it a subtle background so the alt text is readable
@@ -1835,4 +1835,5 @@ closeMobileNav();
   })();
   </script>
 </body>
+
 </html>
