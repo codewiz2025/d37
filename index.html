@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -7,7 +8,9 @@
   <link rel="icon" href="media/d37.jpg">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Inter:wght@300;400;600&family=Cormorant+Garamond:wght@400;500;600&family=Montserrat:wght@300;400;500&family=Dancing+Script:wght@500;600&family=Cinzel:wght@500;600&display=swap" rel="stylesheet">
-  <meta name="description" content="D37 Fashion Atelier — luxury bespoke and ready-to-wear. View gallery and place orders.">
+  <meta name="description" content="D37 Fashion Atelier — luxury bespoke and 
+
+ready-to-wear. View gallery and place orders.">
 
   <style>
     :root{
@@ -471,9 +474,7 @@ height:360px; display:block; object-fit:cover; object-position:center;
       box-shadow:0 14px 36px rgba(212, 175, 55, 0.1);
       border-color: var(--gold);
     }
-    .collection-cover img{ width:100%; height:var(--collection-thumb-h); object-
-
-fit:cover; display:block; border-radius:8px; background:linear-gradient(180deg,#fff,#fafafa);
+    .collection-cover img{ width:100%; height:var(--collection-thumb-h); object-fit:cover; display:block; border-radius:8px; background:linear-gradient(180deg,#fff,#fafafa);
       transition: all var(--transition);
     }
     .collection-cover:hover img {
@@ -609,9 +610,7 @@ padding:8px 12px; border-radius:8px; font-weight:700;
       color: var(--gold);
       transform: scale(1.1);
     }
-    .modal-focused{ width:100%; display:flex; justify-content:center; align-
-
-items:center; margin-top:6px; }
+    .modal-focused{ width:100%; display:flex; justify-content:center; align-items:center; margin-top:6px; }
     .modal-focused img{ width:100%; max-height:62vh; object-fit:contain; border-radius:8px; display:block;
       transition: all var(--transition);
       border: 1px solid rgba(212, 175, 55, 0.2);
@@ -858,10 +857,6 @@ items:center; margin-top:6px; }
       box-shadow:0 18px 40px rgba(212, 175, 55, 0.2);
       overflow:hidden;
       border:2px solid var(--gold);
-      z-index: 1401;
-      position: absolute;
-      bottom: 70px;
-      right: 0;
     }
 
     #creatorPanel .panel-head { 
@@ -873,9 +868,7 @@ items:center; margin-top:6px; }
       transition: all var(--transition);
     }
     #creatorPanel .panel-body { padding:12px; font-size:14px; color:#444; font-family: 'Montserrat', sans-serif; }
-    #creatorPanel .portfolio-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:8px; margin-
-
-top:8px; }
+    #creatorPanel .portfolio-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:8px; margin-top:8px; }
     #creatorPanel .portfolio-item { display:flex; gap:8px; align-items:center; padding:8px; background:#fafafa; border-radius:8px; border:1px solid rgba(212, 175, 55, 0.1);
       transition: all var(--transition);
     }
@@ -1027,10 +1020,6 @@ translateY(-2px);
         width: 45px;
         height: 45px;
         font-size: 20px;
-      }
-      #creatorPanel {
-        width: 300px;
-        right: -10px;
       }
     }
 
@@ -1339,9 +1328,7 @@ label="Close creator panel" style="background:transparent;border:none;font-size:
         </p>
 
         <div role="region" aria-label="Creator portfolio">
-          <div style="font-weight:700;margin-
-
-bottom:6px;font-size:13px;">Selected projects — Websites & Mobile apps</div>
+          <div style="font-weight:700;margin-bottom:6px;font-size:13px;">Selected projects — Websites & Mobile apps</div>
 
           <div class="portfolio-grid">
             <div class="portfolio-item">
@@ -1465,14 +1452,16 @@ closeMobileNav);
 
     // COLLECTIONS data (placeholders) - use relative forward slash paths
     const collections = {
-      "The Signature Kaftan Line DT'25": ["media/signature/01.jpg","media/signature/02.jpg","media/signature/03.jpg","media/signature/04.jpg"],
-      "Elite Men Capsule DD'25": ["media/elite/01.jpg","media/elite/02.jpg","media/elite/03.jpg","media/elite/04.jpg"],
-      "Prime Gentlemen Series": ["media/prime/01.jpg","media/prime/
-
-02.jpg","media/prime/03.jpg","media/prime/04.jpg"],
-      "Heritage Collection": ["media/heritage/01.jpg","media/heritage/02.jpg","media/heritage/03.jpg","media/heritage/04.jpg"],
-      "Eko Edition": ["media/eko/01.jpg","media/eko/02.jpg","media/eko/03.jpg","media/eko/04.jpg"],
-      "Mini Jacket Print DJ'25": ["media/mini-jacket/01.jpg","media/mini-jacket/02.jpg","media/mini-jacket/03.jpg","media/mini-jacket/04.jpg"]
+      "The Signature Kaftan Line DT'25": ["media/DT'25/1.jpg","media/DT'25/2.jpg","media/DT'25/3.jpg","media/DT'25/4.jpg",
+        "media/DT'25/5.jpg","media/DT'25/6.jpg","media/DT'25/7.jpg","media/DT'25/8.jpg"
+      ],
+      "Elite Men Capsule DD'25": ["media/DD'25/1.jpg","media/DD'25/2.jpg","media/DD'25/3.jpg"],
+      "Prime Gentlemen Series": ["media/Prime Gentlemen Series/1.jpg","media/Prime Gentlemen Series/2.jpg","media/Prime Gentlemen Series/3.jpg"],
+      "Heritage Collection": ["media/Heritage Collection/1.jpg","media/Heritage Collection/2.jpg","media/Heritage Collection/3.jpg","media/Heritage Collection/4.jpg",
+        "media/Heritage Collection/5.jpg","media/Heritage Collection/6.jpg","media/Heritage Collection/7.jpg","media/Heritage Collection/8.jpg"
+      ],
+      "Eko Edition": ["media/eko/1.jpg","media/eko/2.jpg","media/eko/3.jpg","media/eko/4.jpg"],
+      "Mini Jacket Print DJ'25": ["media/mini-jacket/1.jpg","media/mini-jacket/2.jpg","media/mini-jacket/3.jpg","media/mini-jacket/4.jpg"]
     };
 
     // Representative cover images (relative)
@@ -1480,12 +1469,11 @@ closeMobileNav);
       "The Signature Kaftan Line DT'25": "media/icon.jpg",
       "Elite Men Capsule DD'25": "media/IMG-20251119-WA0101.jpg",
       "Prime Gentlemen Series": "media/IMG-20251119-WA0100.jpg",
-      "Heritage Collection": "media/
-
-IMG-20251119-WA0102.jpg",
+      "Heritage Collection": "media/IMG-20251119-WA0102.jpg",
       "Eko Edition": "media/IMG-20251119-WA0137.jpg",
       "Mini Jacket Print DJ'25": "media/IMG-20251119-WA0092.jpg"
     };
+
 
     const collectionCoversContainer = $('#collectionCovers');
     const mobileCollectionCoversContainer = $('#mobileCollectionCovers');
@@ -1565,9 +1553,8 @@ document.createElement('div');
     const closeGallery = $('#closeGallery');
     const modalTitle = $('#modalTitle');
     const modalSubtitle = $('#modalSubtitle');
-    const modalFocused = (document.querySelector('.modal-
+    const modalFocused = $('.modal-focused');
 
-focused'));
 
     function openModalForCollection(collectionKey, focusedIndex = 0){
       const imgs = collections[collectionKey] || [];
@@ -1579,8 +1566,8 @@ focused'));
         const thumbWrap = document.createElement('div');
         thumbWrap.className = 'thumb';
         const img = document.createElement('img');
-
         img.src = src;
+
         img.alt = collectionKey + ' — ' + (idx + 1);
         img.loading = 'lazy';
         img.addEventListener('click', function(){ showLargeImageInModal(src, collectionKey); });
@@ -1592,8 +1579,8 @@ focused'));
         showLargeImageInModal(imgs[Math.min(focusedIndex, imgs.length - 1)], collectionKey);
       } else {
         if(modalFocused) modalFocused.innerHTML = '<div style="color:var(--muted)">No images yet for this collection.</div>';
-
       }
+
 
       modal && modal.classList.add('show');
       modal && modal.setAttribute('aria-hidden','false');
@@ -1610,7 +1597,6 @@ focused'));
       big.loading = 'eager';
       modalFocused.appendChild(big);
 
-
       modalFocused.scrollIntoView({ behavior: 'smooth', block: 'center' });
     }
 
@@ -1622,8 +1608,9 @@ focused'));
     }
     $('#moreGalleryBtn') && $('#moreGalleryBtn').addEventListener('click', function(){ const first = Object.keys(collections)[0]; openModalForCollection(first, 0); });
     closeGallery && closeGallery.addEventListener('click', closeModal);
+    modal && 
 
-    modal && modal.addEventListener('click', function(e){ if(e.target === modal) closeModal(); });
+modal.addEventListener('click', function(e){ if(e.target === modal) closeModal(); });
     document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeModal(); });
 
     // ORDER FORM (single implementation; validation + UX)
@@ -1634,28 +1621,27 @@ focused'));
 
     function setError(el, text){
       if(!el) return;
-      const err = document.getElementById('err-' + el.id);
+      const err = $('#err-' + el.id);
       el.classList.add('is-invalid');
       if(err){ err.textContent = text; err.style.display = 'block'; }
     }
-
     function clearError(el){
       if(!el) return;
-      const err = document.getElementById('err-' + el.id);
+
+      const err = $('#err-' + el.id);
       el.classList.remove('is-invalid');
       if(err){ err.textContent = ''; err.style.display = 'none'; }
     }
     function validateOrder(){
       let ok = true;
-      const name = document.getElementById('name');
-      const email = document.getElementById('email');
-      const details = document.getElementById('details');
+      const name = $('#name');
+      const email = $('#email');
+      const details = $('#details');
       if(!name.value.trim()){ setError(name, 'Please enter your name'); ok = false; } else clearError(name);
-      if(!email.value.trim() || !/^\S+@\S+\.\S+$/.test(email.value)){ setError(email, 'Please enter a valid email'); ok = false; } 
-
-else clearError(email);
+      if(!email.value.trim() || !/^\S+@\S+\.\S+$/.test(email.value)){ setError(email, 'Please enter a valid email'); ok = false; } else clearError(email);
       if(details.value.trim().length < 10){ setError(details, 'Please provide more details (min 10 chars)'); ok = false; } else clearError(details);
       return ok;
+
     }
 
     if(orderForm){
@@ -1670,11 +1656,11 @@ else clearError(email);
         // Simulate send; replace with actual fetch() to your backend endpoint
         setTimeout(()=> {
           orderForm.reset();
-
           orderMsg.textContent = 'Order submitted. We will contact you shortly.';
           orderSubmit.disabled = false;
           setTimeout(()=> { orderMsg.textContent = ''; }, 6000);
         }, 900);
+
       });
     }
     if(orderReset){
@@ -1686,33 +1672,33 @@ else clearError(email);
           orderForm.querySelectorAll('.error-text').forEach(s => { s.textContent = ''; s.style.display = 'none'; });
         }
       });
-
     }
     // live-clear on input
     if(orderForm){
       orderForm.addEventListener('input', function(e){
-        if(e.target && e.target.classList) clearError(e.target);
+        if(e.target && e.target.classList) 
+
+clearError(e.target);
       });
     }
 
     // HERO overlay CTA hooking
-    document.getElementById('overlayView') && document.getElementById('overlayView').addEventListener('click', ()=> showSection('gallery'));
-    document.getElementById('overlayOrder') && document.getElementById('overlayOrder').addEventListener('click', ()=> 
-
-showSection('order'));
+    $('#overlayView') && $('#overlayView').addEventListener('click', ()=> showSection('gallery'));
+    $('#overlayOrder') && $('#overlayOrder').addEventListener('click', ()=> showSection('order'));
 
     // CREATOR WIDGET behavior (opens panel when avatar clicked)
-    const creatorAvatar = document.getElementById('creatorAvatar');
-    const creatorPanel = document.getElementById('creatorPanel');
-    const creatorClose = document.getElementById('creatorClose');
+    const creator = $('#creator');
+    const creatorAvatar = $('#creatorAvatar');
+    const creatorPanel = $('#creatorPanel');
+    const creatorClose = $('#creatorClose');
 
     function openCreatorPanel(){
       if(!creatorPanel) return;
       creatorPanel.style.display = 'block';
+
       creatorPanel.style.opacity = 0;
       creatorPanel.style.transform = 'translateY(8px)';
       creatorPanel.style.transition = 'opacity 220ms ease, transform 220ms cubic-bezier(.2,.9,.3,1)';
-
       requestAnimationFrame(()=> {
         creatorPanel.style.opacity = 1;
         creatorPanel.style.transform = 'translateY(0)';
@@ -1722,41 +1708,45 @@ showSection('order'));
       // trap focus
       const focusables = creatorPanel.querySelectorAll('a,button,input,textarea,select');
       if(focusables.length) focusables[0].focus();
+      document.body.style.overflow = 
+
+'hidden';
     }
 
     function closeCreatorPanel(){
       if(!creatorPanel) return;
       creatorPanel.style.opacity = 0;
-
       creatorPanel.style.transform = 'translateY(8px)';
       creatorPanel.setAttribute('aria-hidden','true');
       creatorPanel.setAttribute('aria-modal','false');
       setTimeout(()=> {
         creatorPanel.style.display = 'none';
       }, 240);
+      document.body.style.overflow = '';
       creatorAvatar && creatorAvatar.focus();
     }
 
     // Attach handlers
-    creatorAvatar && creatorAvatar.addEventListener('click', function(e){ e.stopPropagation(); openCreatorPanel(); });
+    creatorAvatar && creatorAvatar.addEventListener('click', 
+
+function(e){ e.stopPropagation(); openCreatorPanel(); });
     creatorClose && creatorClose.addEventListener('click', function(e){ e.stopPropagation(); closeCreatorPanel(); });
 
     // Close panel by clicking outside
     document.addEventListener('click', function(ev){
       if(!creatorPanel) return;
-      const creatorContainer = document.getElementById('creator');
-      if(creatorPanel.style.display === 'block' && !creatorContainer.contains(ev.target)){
+      if(creatorPanel.style.display === 'block' && !creator.contains(ev.target) && !creatorPanel.contains(ev.target)){
         closeCreatorPanel();
       }
     });
 
     document.addEventListener('keydown', function(ev){
       if(ev.key === 'Escape'){
-        if(creatorPanel && creatorPanel.style.display === 'block') closeCreatorPanel();
-        if(modal && modal.classList.contains('show')) closeModal();
-        if(mobileNav && mobileNav.classList.contains('open')) 
+        if(creatorPanel && creatorPanel.style.display === 'block') 
 
-closeMobileNav();
+closeCreatorPanel();
+        if(modal && modal.classList.contains('show')) closeModal();
+        if(mobileNav && mobileNav.classList.contains('open')) closeMobileNav();
       }
     });
 
@@ -1770,25 +1760,25 @@ closeMobileNav();
         const first = focusables[0];
         const last = focusables[focusables.length - 1];
         if(ev.shiftKey && document.activeElement === first){ ev.preventDefault(); last.focus(); }
-
         else if(!ev.shiftKey && document.activeElement === last){ ev.preventDefault(); first.focus(); }
       });
     }
 
     // BACK TO TOP BUTTON
-    const backToTopBtn = document.getElementById('backToTop');
+    const backToTopBtn = $('#backToTop');
     
     // Function to check scroll position and show/hide button
     function toggleBackToTop() {
       if (window.scrollY > 300) {
         backToTopBtn.classList.add('visible');
       } else {
-        backToTopBtn.classList.remove('visible');
+        
+
+backToTopBtn.classList.remove('visible');
       }
     }
     
     // Scroll to top function
-
     function scrollToTop() {
       window.scrollTo({
         top: 0,
@@ -1803,11 +1793,11 @@ closeMobileNav();
       backToTopBtn.addEventListener('click', scrollToTop);
       
       // Initial check
+
       toggleBackToTop();
       
       // Listen for scroll events
       window.addEventListener('scroll', toggleBackToTop);
-
     }
 
     // RENDER collections (initial)
@@ -1815,13 +1805,13 @@ closeMobileNav();
 
     // DEGRADE-FRIENDLY: if images fail to load when opened directly from file://, try adding basic error handlers to show helpful alt label or fallback
     // (This doesn't bypass browser file:// security restrictions; it just gives clearer feedback.)
-    Array.from(document.querySelectorAll('img')).forEach(img => {
+    $$('img').forEach(img => {
       img.addEventListener('error', function(){
         // if image fails, try swapping to a generic placeholder if present
         if(!img.dataset._triedFallback){
+
           img.dataset._triedFallback = '1';
           // fallback to a known file name if exists
-
           img.src = 'media/icon.jpg';
         } else {
           // give it a subtle background so the alt text is readable
@@ -1838,4 +1828,5 @@ closeMobileNav();
   })();
   </script>
 </body>
+
 </html>
