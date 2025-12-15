@@ -1,4 +1,3 @@
-
 <!doctype html>
 <html lang="en">
 <head>
@@ -8,9 +7,7 @@
   <link rel="icon" href="media/d37.jpg">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Inter:wght@300;400;600&family=Cormorant+Garamond:wght@400;500;600&family=Montserrat:wght@300;400;500&family=Dancing+Script:wght@500;600&family=Cinzel:wght@500;600&display=swap" rel="stylesheet">
-  <meta name="description" content="D37 Fashion Atelier — luxury bespoke and 
-
-ready-to-wear. View gallery and place orders.">
+  <meta name="description" content="D37 Fashion Atelier — luxury bespoke and ready-to-wear. View gallery and place orders.">
 
   <style>
     :root{
@@ -861,6 +858,10 @@ items:center; margin-top:6px; }
       box-shadow:0 18px 40px rgba(212, 175, 55, 0.2);
       overflow:hidden;
       border:2px solid var(--gold);
+      z-index: 1401;
+      position: absolute;
+      bottom: 70px;
+      right: 0;
     }
 
     #creatorPanel .panel-head { 
@@ -1026,6 +1027,10 @@ translateY(-2px);
         width: 45px;
         height: 45px;
         font-size: 20px;
+      }
+      #creatorPanel {
+        width: 300px;
+        right: -10px;
       }
     }
 
@@ -1560,8 +1565,9 @@ document.createElement('div');
     const closeGallery = $('#closeGallery');
     const modalTitle = $('#modalTitle');
     const modalSubtitle = $('#modalSubtitle');
-    const modalFocused = $('.modal-focused');
+    const modalFocused = (document.querySelector('.modal-
 
+focused'));
 
     function openModalForCollection(collectionKey, focusedIndex = 0){
       const imgs = collections[collectionKey] || [];
@@ -1573,8 +1579,8 @@ document.createElement('div');
         const thumbWrap = document.createElement('div');
         thumbWrap.className = 'thumb';
         const img = document.createElement('img');
-        img.src = src;
 
+        img.src = src;
         img.alt = collectionKey + ' — ' + (idx + 1);
         img.loading = 'lazy';
         img.addEventListener('click', function(){ showLargeImageInModal(src, collectionKey); });
@@ -1586,8 +1592,8 @@ document.createElement('div');
         showLargeImageInModal(imgs[Math.min(focusedIndex, imgs.length - 1)], collectionKey);
       } else {
         if(modalFocused) modalFocused.innerHTML = '<div style="color:var(--muted)">No images yet for this collection.</div>';
-      }
 
+      }
 
       modal && modal.classList.add('show');
       modal && modal.setAttribute('aria-hidden','false');
@@ -1604,6 +1610,7 @@ document.createElement('div');
       big.loading = 'eager';
       modalFocused.appendChild(big);
 
+
       modalFocused.scrollIntoView({ behavior: 'smooth', block: 'center' });
     }
 
@@ -1615,9 +1622,8 @@ document.createElement('div');
     }
     $('#moreGalleryBtn') && $('#moreGalleryBtn').addEventListener('click', function(){ const first = Object.keys(collections)[0]; openModalForCollection(first, 0); });
     closeGallery && closeGallery.addEventListener('click', closeModal);
-    modal && 
 
-modal.addEventListener('click', function(e){ if(e.target === modal) closeModal(); });
+    modal && modal.addEventListener('click', function(e){ if(e.target === modal) closeModal(); });
     document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeModal(); });
 
     // ORDER FORM (single implementation; validation + UX)
@@ -1628,27 +1634,28 @@ modal.addEventListener('click', function(e){ if(e.target === modal) closeModal()
 
     function setError(el, text){
       if(!el) return;
-      const err = $('#err-' + el.id);
+      const err = document.getElementById('err-' + el.id);
       el.classList.add('is-invalid');
       if(err){ err.textContent = text; err.style.display = 'block'; }
     }
+
     function clearError(el){
       if(!el) return;
-
-      const err = $('#err-' + el.id);
+      const err = document.getElementById('err-' + el.id);
       el.classList.remove('is-invalid');
       if(err){ err.textContent = ''; err.style.display = 'none'; }
     }
     function validateOrder(){
       let ok = true;
-      const name = $('#name');
-      const email = $('#email');
-      const details = $('#details');
+      const name = document.getElementById('name');
+      const email = document.getElementById('email');
+      const details = document.getElementById('details');
       if(!name.value.trim()){ setError(name, 'Please enter your name'); ok = false; } else clearError(name);
-      if(!email.value.trim() || !/^\S+@\S+\.\S+$/.test(email.value)){ setError(email, 'Please enter a valid email'); ok = false; } else clearError(email);
+      if(!email.value.trim() || !/^\S+@\S+\.\S+$/.test(email.value)){ setError(email, 'Please enter a valid email'); ok = false; } 
+
+else clearError(email);
       if(details.value.trim().length < 10){ setError(details, 'Please provide more details (min 10 chars)'); ok = false; } else clearError(details);
       return ok;
-
     }
 
     if(orderForm){
@@ -1663,11 +1670,11 @@ modal.addEventListener('click', function(e){ if(e.target === modal) closeModal()
         // Simulate send; replace with actual fetch() to your backend endpoint
         setTimeout(()=> {
           orderForm.reset();
+
           orderMsg.textContent = 'Order submitted. We will contact you shortly.';
           orderSubmit.disabled = false;
           setTimeout(()=> { orderMsg.textContent = ''; }, 6000);
         }, 900);
-
       });
     }
     if(orderReset){
@@ -1679,33 +1686,33 @@ modal.addEventListener('click', function(e){ if(e.target === modal) closeModal()
           orderForm.querySelectorAll('.error-text').forEach(s => { s.textContent = ''; s.style.display = 'none'; });
         }
       });
+
     }
     // live-clear on input
     if(orderForm){
       orderForm.addEventListener('input', function(e){
-        if(e.target && e.target.classList) 
-
-clearError(e.target);
+        if(e.target && e.target.classList) clearError(e.target);
       });
     }
 
     // HERO overlay CTA hooking
-    $('#overlayView') && $('#overlayView').addEventListener('click', ()=> showSection('gallery'));
-    $('#overlayOrder') && $('#overlayOrder').addEventListener('click', ()=> showSection('order'));
+    document.getElementById('overlayView') && document.getElementById('overlayView').addEventListener('click', ()=> showSection('gallery'));
+    document.getElementById('overlayOrder') && document.getElementById('overlayOrder').addEventListener('click', ()=> 
+
+showSection('order'));
 
     // CREATOR WIDGET behavior (opens panel when avatar clicked)
-    const creator = $('#creator');
-    const creatorAvatar = $('#creatorAvatar');
-    const creatorPanel = $('#creatorPanel');
-    const creatorClose = $('#creatorClose');
+    const creatorAvatar = document.getElementById('creatorAvatar');
+    const creatorPanel = document.getElementById('creatorPanel');
+    const creatorClose = document.getElementById('creatorClose');
 
     function openCreatorPanel(){
       if(!creatorPanel) return;
       creatorPanel.style.display = 'block';
-
       creatorPanel.style.opacity = 0;
       creatorPanel.style.transform = 'translateY(8px)';
       creatorPanel.style.transition = 'opacity 220ms ease, transform 220ms cubic-bezier(.2,.9,.3,1)';
+
       requestAnimationFrame(()=> {
         creatorPanel.style.opacity = 1;
         creatorPanel.style.transform = 'translateY(0)';
@@ -1715,45 +1722,41 @@ clearError(e.target);
       // trap focus
       const focusables = creatorPanel.querySelectorAll('a,button,input,textarea,select');
       if(focusables.length) focusables[0].focus();
-      document.body.style.overflow = 
-
-'hidden';
     }
 
     function closeCreatorPanel(){
       if(!creatorPanel) return;
       creatorPanel.style.opacity = 0;
+
       creatorPanel.style.transform = 'translateY(8px)';
       creatorPanel.setAttribute('aria-hidden','true');
       creatorPanel.setAttribute('aria-modal','false');
       setTimeout(()=> {
         creatorPanel.style.display = 'none';
       }, 240);
-      document.body.style.overflow = '';
       creatorAvatar && creatorAvatar.focus();
     }
 
     // Attach handlers
-    creatorAvatar && creatorAvatar.addEventListener('click', 
-
-function(e){ e.stopPropagation(); openCreatorPanel(); });
+    creatorAvatar && creatorAvatar.addEventListener('click', function(e){ e.stopPropagation(); openCreatorPanel(); });
     creatorClose && creatorClose.addEventListener('click', function(e){ e.stopPropagation(); closeCreatorPanel(); });
 
     // Close panel by clicking outside
     document.addEventListener('click', function(ev){
       if(!creatorPanel) return;
-      if(creatorPanel.style.display === 'block' && !creator.contains(ev.target) && !creatorPanel.contains(ev.target)){
+      const creatorContainer = document.getElementById('creator');
+      if(creatorPanel.style.display === 'block' && !creatorContainer.contains(ev.target)){
         closeCreatorPanel();
       }
     });
 
     document.addEventListener('keydown', function(ev){
       if(ev.key === 'Escape'){
-        if(creatorPanel && creatorPanel.style.display === 'block') 
-
-closeCreatorPanel();
+        if(creatorPanel && creatorPanel.style.display === 'block') closeCreatorPanel();
         if(modal && modal.classList.contains('show')) closeModal();
-        if(mobileNav && mobileNav.classList.contains('open')) closeMobileNav();
+        if(mobileNav && mobileNav.classList.contains('open')) 
+
+closeMobileNav();
       }
     });
 
@@ -1767,25 +1770,25 @@ closeCreatorPanel();
         const first = focusables[0];
         const last = focusables[focusables.length - 1];
         if(ev.shiftKey && document.activeElement === first){ ev.preventDefault(); last.focus(); }
+
         else if(!ev.shiftKey && document.activeElement === last){ ev.preventDefault(); first.focus(); }
       });
     }
 
     // BACK TO TOP BUTTON
-    const backToTopBtn = $('#backToTop');
+    const backToTopBtn = document.getElementById('backToTop');
     
     // Function to check scroll position and show/hide button
     function toggleBackToTop() {
       if (window.scrollY > 300) {
         backToTopBtn.classList.add('visible');
       } else {
-        
-
-backToTopBtn.classList.remove('visible');
+        backToTopBtn.classList.remove('visible');
       }
     }
     
     // Scroll to top function
+
     function scrollToTop() {
       window.scrollTo({
         top: 0,
@@ -1800,11 +1803,11 @@ backToTopBtn.classList.remove('visible');
       backToTopBtn.addEventListener('click', scrollToTop);
       
       // Initial check
-
       toggleBackToTop();
       
       // Listen for scroll events
       window.addEventListener('scroll', toggleBackToTop);
+
     }
 
     // RENDER collections (initial)
@@ -1812,13 +1815,13 @@ backToTopBtn.classList.remove('visible');
 
     // DEGRADE-FRIENDLY: if images fail to load when opened directly from file://, try adding basic error handlers to show helpful alt label or fallback
     // (This doesn't bypass browser file:// security restrictions; it just gives clearer feedback.)
-    $$('img').forEach(img => {
+    Array.from(document.querySelectorAll('img')).forEach(img => {
       img.addEventListener('error', function(){
         // if image fails, try swapping to a generic placeholder if present
         if(!img.dataset._triedFallback){
-
           img.dataset._triedFallback = '1';
           // fallback to a known file name if exists
+
           img.src = 'media/icon.jpg';
         } else {
           // give it a subtle background so the alt text is readable
@@ -1835,5 +1838,4 @@ backToTopBtn.classList.remove('visible');
   })();
   </script>
 </body>
-
 </html>
